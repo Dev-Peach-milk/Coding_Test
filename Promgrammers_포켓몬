@@ -1,0 +1,7 @@
+function solution(nums) {
+    let numsN = nums.length / 2;
+    let pokeN = new Set(nums).size;
+    answer = pokeN > numsN ? numsN : pokeN
+
+    return answer;
+}
