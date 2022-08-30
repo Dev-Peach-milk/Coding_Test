@@ -1,0 +1,18 @@
+//나의 풀이
+function solution(s) {
+    var answer = '';
+    let mid = parseInt(s.length / 2);
+    if(s.length % 2 === 0) {
+        answer = s[mid - 1] + s[mid];
+    } else {
+        answer = s[mid]
+    }
+
+    return answer;
+}
+
+//다른 사람 풀이
+//1) 문자열 자르는 substr 사용함
+function solution(s) {
+    return s.substr(Math.ceil(s.length / 2) - 1, s.length % 2 === 0 ? 2 : 1);
+}
