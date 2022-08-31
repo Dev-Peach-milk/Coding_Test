@@ -1,0 +1,10 @@
+//나의 풀이
+function solution(s){
+    var answer = true;
+    s = s.toLowerCase().split("");
+    let p = s.filter(el => el === "p");
+    let y = s.filter(el => el === "y")
+    if(p.length !== y.length) answer = false;
+
+    return answer;
+}
