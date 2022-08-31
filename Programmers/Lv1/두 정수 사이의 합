@@ -1,0 +1,30 @@
+//나의 풀이
+//a, b비교먼저하고 for문으로 합산
+function solution(a, b) {
+    var answer = 0;
+    if(a > b) {
+        let tmp = a;
+        a = b;
+        b = tmp;
+    }
+    for(let i = a; i <= b; i++) {
+        answer += i;
+    }
+    return answer;
+}
+
+
+//다른 사람 풀이
+// 1) 가우스의 덧셈
+function solution(a, b) {
+  return ((a + b) * (Math.abs(a - b) + 1)) / 2;
+}
+
+// 2)for문에서 a, b를 min / max로 구하기
+function solution(a, b) {
+  var answer = 0;
+  for (let i = Math.min(a, b); i <= Math.max(a, b); i++) {
+    answer += i;
+  }
+  return answer;
+}
