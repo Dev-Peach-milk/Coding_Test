@@ -1,0 +1,27 @@
+//다른 사람 풀이를 참고하였습니다.
+//재귀로 이진트리와 dfs를 동시에 구현하면서 완전 탐색하는 문제입니다.
+//이진트리의 왼쪽은 +, 오른쪽은 - 값이 오도록 설정하여 풀이하는 방식입니다.
+
+function solution(numbers, target) {
+    let answer = 0;
+    
+    //DFS
+    function dfsRecursive(index, sum) {
+        if(index === numbers.length) {
+            if(sum === target) {
+                answer++;
+            }
+            return;
+        }
+        
+        dfsRecursive(index + 1, sum + numbers[index]);
+        dfsRecursive(index + 1, sum - numbers[index]);
+    }
+    
+    //함수 호출
+    dfsRecursive(0, 0)
+    
+    return answer;
+}
+    
+    
