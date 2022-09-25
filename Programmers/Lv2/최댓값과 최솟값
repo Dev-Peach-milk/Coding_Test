@@ -1,0 +1,15 @@
+//나의 풀이
+function solution(s) {
+    var answer = '';
+    let str = s.split(' ').sort((a, b) => (a - b));
+    answer = str[0] + ' ' + str[str.length - 1];
+    
+    return answer;
+}
+
+//다른 사람의 풀이
+function solution(s) {
+    const arr = s.split(' ');
+
+    return Math.min(...arr)+' '+Math.max(...arr); //Math.min(/max)를 사용부분이 인상깊었다.
+}
