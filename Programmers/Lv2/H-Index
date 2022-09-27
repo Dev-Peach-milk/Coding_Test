@@ -1,0 +1,12 @@
+//나의 풀이
+function solution(citations) {
+    var answer = 0;
+    citations.sort((a, b) => (b - a))
+    
+    let h = 0;
+    while(citations[h] >= h + 1) {
+        h++;
+    } 
+    answer = h
+    return answer;
+}
