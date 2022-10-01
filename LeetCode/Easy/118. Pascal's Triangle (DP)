@@ -1,6 +1,7 @@
 //나의 풀이
 var generate = function(numRows) {
-    let arrs = new Array(numRows).fill(1).map((e, idx) => e = new Array(idx + 1).fill(0))
+    let arrs = new Array(numRows).fill(1).map((e, idx) => e = new Array(idx + 1).fill(0)) //중첩배열도 채워지도록 만들었는데, 속도만 느려졌다.
+    //다른 사람 풀이를 보니 중첩배열 없이 arrs = []; 까지하고, 중첩배열은 for문 안에서 빈 배열로 생성하니 더 빨랐다.
 
     for(let i = 0; i < arrs.length; i++) {
         for(let j = 0; j < arrs[i].length; j++) {
@@ -15,3 +16,5 @@ var generate = function(numRows) {
     }
     return arrs
 };
+
+
