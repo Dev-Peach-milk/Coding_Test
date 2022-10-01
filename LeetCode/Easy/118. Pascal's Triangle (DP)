@@ -1,0 +1,17 @@
+//나의 풀이
+var generate = function(numRows) {
+    let arrs = new Array(numRows).fill(1).map((e, idx) => e = new Array(idx + 1).fill(0))
+
+    for(let i = 0; i < arrs.length; i++) {
+        for(let j = 0; j < arrs[i].length; j++) {
+            if(i === i && j === 0) {
+                arrs[i][j] = 1;
+            } else if(i === i && j === i) {
+                arrs[i][j] = 1;
+            } else {
+                arrs[i][j] = arrs[i - 1][j - 1] + arrs[i - 1][j]
+            }
+        }
+    }
+    return arrs
+};
