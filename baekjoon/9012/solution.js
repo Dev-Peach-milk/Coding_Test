@@ -4,16 +4,15 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 ​
 let lineInput = fs.readFileSync(filePath).toString().trim().split("\n");
-​
 let len = lineInput.shift();
 ​
-for(let i = 0; i < len; i++) {
+function VPS(input) {
   let stack = [];
-  for(let j = 0; j < lineInput[i].length; j++) {
-    if(lineInput[i][j] === '(') {
+  for(let i = 0; i < input.length; i++) {
+    if(input[i] === '(') {
       stack.push('(');
     }
-    if(lineInput[i][j] === ')') {
+    if(input[i] === ')') {
       if(!stack.length) {
         stack.push(')')
         break;
@@ -26,3 +25,6 @@ for(let i = 0; i < len; i++) {
   else console.log('YES');
 }
 ​
+for(let i = 0; i < len; i++) {
+  VPS(lineInput[i])
+}
