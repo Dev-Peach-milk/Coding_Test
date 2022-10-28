@@ -10,7 +10,7 @@ let deque = [];
 let answer = [];
 ​
 for (let i = 1; i < 1 + size; i++) {
-  let [cmd, val] = lineInput[i].split(" ");
+  let cmd = lineInput[i];
   switch (cmd) {
     case "push_front":
       deque.unshift(val);
@@ -36,6 +36,16 @@ for (let i = 1; i < 1 + size; i++) {
     case "back":
       answer.push(!deque.length ? -1 : deque[deque.length - 1]);
       break;
+    default:
+      let [c, val] = cmd.split(" ");
+      switch(c) {
+          case "push_front":
+              deque.unshift(val);
+              break;
+          case "push_back":
+              deque.push(val);
+              break;
+          }
   }
 }
 ​
