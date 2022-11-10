@@ -1,23 +1,22 @@
 // [문제 링크]: https://www.acmicpc.net/problem/10820
 
-var fs = require('fs');
-var input = fs.readFileSync('/dev/stdin').toString().split('\n');
-var result = ''; 
-for(var i in input){
-    if(input[i] === '') continue;
-    var answer = [0, 0, 0, 0];
-    var splited = input[i].split('');
-    for(var j in splited){
-        if( splited[j] >='a' && splited[j]<='z' ){
-            answer[0]++;
-        }else if( splited[j] >='A' && splited[j] <='Z' ){
-            answer[1]++;
-        }else if(splited[j]>='0' && splited[j]<='9' ){
-            answer[2]++;
-        }else if( splited[j] === ' '){
-            answer[3]++;
-        }
-    }
-    result += answer.join(' ') + '\n';
+​
+const fs = require("fs");
+const input = fs.readFileSync("/dev/stdin").toString().split("\n");
+​
+let lower = /[a-z]/g;
+let upper = /[A-Z]/g;
+let number = /[0-9]/g;
+let space = /\s/g;
+let answer = ''
+​
+for(let i = 0; i < input.length; i++) {
+  if(input[i] === '') continue
+  let lowerCount = input[i].match(lower) ? input[i].match(lower).length : 0;
+  let upperCount = input[i].match(upper) ? input[i].match(upper).length : 0;
+  let numCount = input[i].match(number) ? input[i].match(number).length : 0;
+  let spaceCount = input[i].match(space) ? input[i].match(space).length : 0;
+  answer += (lowerCount + ' ' + upperCount + ' ' + numCount + ' ' + spaceCount + '\n')
 }
-console.log(result.trim());
+​
+console.log(answer.trim())
