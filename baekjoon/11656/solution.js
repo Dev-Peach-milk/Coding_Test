@@ -7,5 +7,5 @@ for(let i = 0; i < input.length; i++) {
   result.push(input.slice(i))
 }
 ​
-result = result.sort((a,b) => a.localeCompare(b))
+result = result.sort()
 console.log(result.join('\n').trim())
