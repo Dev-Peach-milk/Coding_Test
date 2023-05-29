@@ -3,6 +3,9 @@
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 
-let wordInput = fs.readFileSync(filePath).toString().trim().split(/\s/g);
+let wordInput = fs.readFileSync(filePath).toString().trim().split(" ");
 
-console.log(wordInput[0] * wordInput[1]);
+const a = parseInt(wordInput[0]);
+const b = parseInt(wordInput[1]);
+
+console.log(a * b);
