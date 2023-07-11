@@ -1,4 +1,5 @@
-function solution(board) {
+// 내 풀이
+function solution1(board) {
   let answer = 0;
   const delta = [
     [-1, 0],
@@ -47,6 +48,36 @@ function solution(board) {
   return answer;
 }
 
+// 강사님 풀이
+// 반복해서 가면 안된다는 조건 없으므로 visited 필요없음
+function solution(board) {
+  let answer = 0;
+  let dx = [-1, 0, 1, 0];
+  let dy = [0, 1, 0, -1];
+
+  function DFS(x, y) {
+    if (x === 6 && y === 6) {
+      answer++;
+      return;
+    }
+    for (let k = 0; k < 4; k++) {
+      let nx = x + dx[k];
+      let ny = y + dy[k];
+
+      if (nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] === 0) {
+        //여기에서 한번에 조건을 설정함
+        board[nx][ny] = 1;
+        DFS(nx, ny);
+        board[nx][ny] = 0;
+      }
+    }
+  }
+
+  board[0][0] = 1;
+  DFS(0, 0);
+  return answer;
+}
+
 let arr = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 1, 1, 1, 1, 1, 0],
@@ -57,4 +88,5 @@ let arr = [
   [1, 0, 0, 0, 0, 0, 0],
 ];
 
+console.log(solution1(arr));
 console.log(solution(arr));
