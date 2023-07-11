@@ -49,7 +49,6 @@ function solution1(board) {
 }
 
 // 강사님 풀이
-// 반복해서 가면 안된다는 조건 없으므로 visited 필요없음
 function solution(board) {
   let answer = 0;
   let dx = [-1, 0, 1, 0];
@@ -66,6 +65,7 @@ function solution(board) {
 
       if (nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] === 0) {
         //여기에서 한번에 조건을 설정함
+        // visited를 별도로 관리하지 않고, board 자체를 변경함
         board[nx][ny] = 1;
         DFS(nx, ny);
         board[nx][ny] = 0;
