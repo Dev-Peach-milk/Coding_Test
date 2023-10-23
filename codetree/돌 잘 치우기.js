@@ -17,7 +17,7 @@ const [dx, dy] = [
 ];
 
 const q = [];
-const selectedStones = [];
+let selectedStones = [];
 const stonePositions = [];
 let visited = Array.from({ length: n }, () =>
   Array.from({ length: n }, () => false)
@@ -93,20 +93,45 @@ function getVisitedNum() {
   return cnt;
 }
 
-function findMax(idx, count) {
-  if (idx === stonePositions.length) {
-    if (count === m) {
-      answer = Math.max(answer, getVisitedNum());
-    }
+// function findMax(idx, count) {
+//   if (idx === stonePositions.length) {
+//     if (count === m) {
+//       answer = Math.max(answer, getVisitedNum());
+//     }
+//     return;
+//   }
+
+//   selectedStones.push(stonePositions[idx]);
+//   findMax(idx + 1, count + 1);
+//   selectedStones.pop();
+//   findMax(idx + 1, count);
+// }
+
+const selectedStonesIdx = [];
+const idxArr = Array.from({ length: m }, () => 0);
+
+function getSelectedStonesIdx(L, idx) {
+  if (L === m) {
+    selectedStonesIdx.push([...idxArr]);
     return;
   }
 
-  selectedStones.push(stonePositions[idx]);
-  findMax(idx + 1, count + 1);
-  selectedStones.pop();
-  findMax(idx + 1, count);
+  for (let i = idx; i < stonePositions.length; i++) {
+    idxArr[L] = i;
+    getSelectedStonesIdx(L + 1, i + 1);
+  }
 }
 
-findMax(0, 0);
+// findMax(0, 0);
+
+getSelectedStonesIdx(0, 0);
+
+for (let i = 0; i < selectedStonesIdx.length; i++) {
+  for (let j = 0; j < selectedStonesIdx[i].length; j++) {
+    selectedStones.push(stonePositions[selectedStonesIdx[i][j]]);
+  }
+  answer = Math.max(answer, getVisitedNum());
+  selectedStones = [];
+}
 
 console.log(answer);
